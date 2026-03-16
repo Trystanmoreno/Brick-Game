@@ -8,6 +8,7 @@ import javax.swing.*;
 public class GameFrame extends MyFrame implements KeyListener, ActionListener{
     Timer timer;
     Paddle paddle;
+    Ball ball;
 
     public GameFrame(){
         super("Game");
@@ -16,12 +17,16 @@ public class GameFrame extends MyFrame implements KeyListener, ActionListener{
         this.requestFocusInWindow();
 
         paddle = new Paddle(0,0,5,120,20);
+        ball = new Ball(10,0,5,20);
         //updates when screen is resized or first displayed
         this.addComponentListener(new ComponentAdapter(){
             @Override
             public void componentResized(ComponentEvent e){
                 paddle.setX((getWidth() - paddle.getWidth())/2);
                 paddle.setY((getHeight()-paddle.getHeight())-20);
+                ball.setX((getWidth() - ball.getSize())/2);
+                ball.setY(paddle.getY() - 20);
+                ;
             }
         });
        
@@ -30,12 +35,11 @@ public class GameFrame extends MyFrame implements KeyListener, ActionListener{
         timer.start();
     }
 
-    
-
     @Override
     public void paint(Graphics g){
         super.paint(g);
         paddle.draw(g);
+        ball.draw(g);
     }
 
     @Override
