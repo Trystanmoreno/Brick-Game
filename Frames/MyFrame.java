@@ -1,9 +1,6 @@
 package Frames;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 
 public class MyFrame extends JFrame {
 
@@ -22,5 +19,5 @@ public class MyFrame extends JFrame {
         this.getContentPane().setBackground(new Color(0, 0, 139));
     }
 
-    
+
 }

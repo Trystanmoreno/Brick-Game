@@ -3,31 +3,33 @@ import java.awt.*;
 
 public class Ball {
     int size;
-    int speed;
-    int x;
-    int y;
+    float speed;
+    float x;
+    float y;
+    int dx = 1;
+    int dy = -1;
 
-    public Ball(int x, int y, int speed, int size){
+    public Ball(int x, int y, float speed, int size){
         this.size = size;
         this.speed = speed;
-        this.x = x;
-        this.y = y;
+        this.x = x; //1 = right, -1 = left
+        this.y = y; // -1 = up, 1 = down
 
     }
 
-    public int getSize() {
+    public int size() {
         return size;
     }
     
-    public int getSpeed(){
+    public float getSpeed(){
         return speed;
     }
 
-    public int getX(){
+    public float getX(){
         return x;
     }
     
-    public int getY(){
+    public float getY(){
         return y;
     }
 
@@ -49,7 +51,20 @@ public class Ball {
 
     public void draw(Graphics g){
         g.setColor(Color.GRAY);
-        g.fillOval(x,y,size,size);
+        g.fillOval((int) x,(int)y,size,size);
+    }
+
+     public void move(){
+        x += dx*speed;
+        y += dy*speed;
+    }
+
+    public void revX(){
+        dx *= -1;
+    }
+
+    public void revY(){
+        dy *= -1;
     }
 }
 

@@ -3,12 +3,13 @@ import GameObjects.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
+import Physics.*;
 
 public class GameFrame extends MyFrame implements KeyListener, ActionListener{
     Timer timer;
     Paddle paddle;
     Ball ball;
+    
 
     public GameFrame(){
         super("Game");
@@ -24,7 +25,7 @@ public class GameFrame extends MyFrame implements KeyListener, ActionListener{
             public void componentResized(ComponentEvent e){
                 paddle.setX((getWidth() - paddle.getWidth())/2);
                 paddle.setY((getHeight()-paddle.getHeight())-20);
-                ball.setX((getWidth() - ball.getSize())/2);
+                ball.setX((getWidth() - ball.size())/2);
                 ball.setY(paddle.getY() - 20);
                 ;
             }
@@ -44,6 +45,7 @@ public class GameFrame extends MyFrame implements KeyListener, ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e){
+        BallPhysics.UpdateBall(getWidth(), getHeight(),paddle,ball);
         repaint();
     }
 
@@ -63,10 +65,9 @@ public class GameFrame extends MyFrame implements KeyListener, ActionListener{
         if(paddle.getX() + paddle.getWidth() > getWidth()){
             paddle.setX(getWidth()-paddle.getWidth());
         }
-
-
-
     }
+
+    
 
     @Override 
     public void keyReleased(KeyEvent e){}

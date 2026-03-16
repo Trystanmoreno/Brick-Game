@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import javax.swing.*;
-import javax.swing.border.Border;
+
 
 
 
@@ -15,7 +15,7 @@ public class Title extends MyFrame implements ActionListener{
         
         super("Brick Game" );
         
-        Border border = BorderFactory.createLineBorder(Color.BLUE,3);
+       BorderFactory.createLineBorder(Color.BLUE,3);
 
         //label
         JLabel titleText = new JLabel("Brick Game");
@@ -45,11 +45,8 @@ public class Title extends MyFrame implements ActionListener{
 
             this.setVisible(false);
             this.dispose();
-
-            
         }
     }
-    
 }
 
     
