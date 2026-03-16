@@ -1,24 +1,13 @@
 package Frames;
+import GameObjects.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-
+import java.awt.event.*;
 import javax.swing.*;
 
 
 public class GameFrame extends MyFrame implements KeyListener, ActionListener{
-    private int score = 0;
-
-    int plX = 550; //initial X
-    int plY = 690; // initial Y
-    int plS = 5; //Player speed
-    int plW = 100; //player Witdht
-    int plH = 20; // player Height
-    
-
     Timer timer;
+    Paddle paddle;
 
     public GameFrame(){
         super("Game");
@@ -26,18 +15,27 @@ public class GameFrame extends MyFrame implements KeyListener, ActionListener{
         this.setFocusable(true);
         this.requestFocusInWindow();
 
+        paddle = new Paddle(0,0,5,120,20);
+        //updates when screen is resized or first displayed
+        this.addComponentListener(new ComponentAdapter(){
+            @Override
+            public void componentResized(ComponentEvent e){
+                paddle.setX((getWidth() - paddle.getWidth())/2);
+                paddle.setY((getHeight()-paddle.getHeight())-20);
+            }
+        });
+       
+       
         timer = new Timer(16, this);
         timer.start();
     }
 
+    
+
     @Override
     public void paint(Graphics g){
         super.paint(g);
-        g.fillRect(0,0,getWidth(),getHeight());
-        g.setColor(Color.WHITE);
-
-        g.setColor(new Color(200,200,200));
-        g.fillRect(plX, plY, plW, plH);
+        paddle.draw(g);
     }
 
     @Override
@@ -48,18 +46,21 @@ public class GameFrame extends MyFrame implements KeyListener, ActionListener{
     @Override 
     public void keyPressed(KeyEvent e){
         if(e.getKeyCode()== KeyEvent.VK_A){
-            plX-= plS;
+            paddle.setX(paddle.getX()-paddle.getSpeed());
         }
         if(e.getKeyCode()== KeyEvent.VK_D){
-            plX+= plS;
+            paddle.setX(paddle.getX()+paddle.getSpeed());
         }
 
-        if(plX < 0){
-            plX = 0;
+        if(paddle.getX() < 0){
+            paddle.setX(0);
         }
-        if(plX + plW > getWidth()){
-            plX = getWidth()-plW;
+
+        if(paddle.getX() + paddle.getWidth() > getWidth()){
+            paddle.setX(getWidth()-paddle.getWidth());
         }
+
+
 
     }
 
