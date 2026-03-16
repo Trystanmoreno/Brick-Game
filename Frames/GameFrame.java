@@ -17,8 +17,8 @@ public class GameFrame extends MyFrame implements KeyListener, ActionListener{
         this.setFocusable(true);
         this.requestFocusInWindow();
 
-        paddle = new Paddle(0,0,5,120,20);
-        ball = new Ball(10,0,5,20);
+        paddle = new Paddle(0,0,10,120,20);
+        ball = new Ball(10,0,10,20);
         //updates when screen is resized or first displayed
         this.addComponentListener(new ComponentAdapter(){
             @Override
