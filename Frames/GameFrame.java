@@ -13,7 +13,7 @@ public class GameFrame extends MyFrame implements KeyListener, ActionListener{
 
     int plX = 550; //initial X
     int plY = 690; // initial Y
-    int plS = 2; //Player speed
+    int plS = 5; //Player speed
     int plW = 100; //player Witdht
     int plH = 20; // player Height
     
