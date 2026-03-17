@@ -18,8 +18,10 @@ public class BallPhysics {
         }
 
         //paddle collision 
-        if(ball.getPrevY()+ball.size() <= paddle.getY() && ball.getY()+ball.size() >= paddle.getY() && ballCenter>= paddle.getX() 
-        && ballCenter<= paddle.getX()+paddle.getWidth() && Math.sin(ball.getAngle())>0){
+        if(ball.getY() + ball.size() >= paddle.getY() &&
+        ball.getPrevY() + ball.size() <= paddle.getY() &&
+        ball.getX() + ball.size() >= paddle.getX() &&
+        ball.getX() <= paddle.getX() + paddle.getWidth() && Math.sin(ball.getAngle())>0){
 
             ball.setY(paddle.getY()-ball.size());
 
