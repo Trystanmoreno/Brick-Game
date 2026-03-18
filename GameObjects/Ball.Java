@@ -3,11 +3,12 @@ import java.awt.*;
 
 public class Ball {
     int size;
-    float speed;
-    float x;
-    float y;
+    float speed, x, y, prevY;
     double angle;
-    float prevY;
+
+    public Ball(){
+        this(10,0,10,20);
+    }
 
     public Ball(int x, int y, float speed, int size){
         this.size = size;
@@ -70,7 +71,7 @@ public class Ball {
      public void move(){
         prevY = y;
         x += Math.cos(angle) * speed;
-        y += Math.sin(angle)*speed;
+        y += Math.sin(angle) * speed;
     }
 
     public void revX(){
@@ -80,5 +81,7 @@ public class Ball {
     public void revY(){
         angle = -angle;
     }
+
+    
 }
 

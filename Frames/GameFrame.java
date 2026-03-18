@@ -17,8 +17,8 @@ public class GameFrame extends MyFrame implements KeyListener, ActionListener{
         this.setFocusable(true);
         this.requestFocusInWindow();
 
-        paddle = new Paddle(0,0,10,120,15);
-        ball = new Ball(10,0,10,20);
+        paddle = new Paddle();
+        ball = new Ball();
         //updates when screen is resized or first displayed
         this.addComponentListener(new ComponentAdapter(){
             @Override
@@ -27,7 +27,6 @@ public class GameFrame extends MyFrame implements KeyListener, ActionListener{
                 paddle.setY((getHeight()-paddle.getHeight())-20);
                 ball.setX((getWidth() - ball.size())/2);
                 ball.setY(paddle.getY() - 20);
-                ;
             }
         });
        
@@ -45,7 +44,7 @@ public class GameFrame extends MyFrame implements KeyListener, ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e){
-        BallPhysics.UpdateBall(getWidth(), getHeight(),paddle,ball);
+        BallPhysics.updateBall(getWidth(), paddle, ball);
         repaint();
     }
 

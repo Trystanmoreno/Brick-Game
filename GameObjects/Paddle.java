@@ -3,6 +3,10 @@ import java.awt.*;
 
 public class Paddle{
     private int x, y, speed, width, height;
+    
+    public Paddle(){
+        this(0,0,10,120,15);
+    }
 
     public Paddle(int x, int y, int speed, int width,int height){
         this.x =x;
@@ -52,11 +56,4 @@ public class Paddle{
         g.setColor(Color.GRAY);
         g.fillRect(x,y,width,height);
     }
-    
-    
-
-
-
-
-
 }
